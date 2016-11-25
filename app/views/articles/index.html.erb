@@ -1,0 +1,10 @@
+<h1>Articulos</h1>
+ <div class="row">
+<% @article.each do |art| %>
+        <div class="col-md-4">
+            <h3><%= art.title %></h3>
+            <p> <%= truncate(art.body, length:15 )  %></p> - <%= link_to "Eliminar", art, method: :delete %> -  <%= link_to "Editar", edit_article_path(art) %>
+        </div>
+<% end %>
+</div>
+<%= will_paginate @article %>

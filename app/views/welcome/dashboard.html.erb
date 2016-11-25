@@ -1,0 +1,28 @@
+<h1>DashBoard</h1>
+
+<div class="row">
+    <div class="col-md-2">
+        <ul class="no-list  center-xs middle-xs">
+            <li class="row">
+              <%= link_to "Crear Articulo", "/articles/new" %>    
+            </li>
+            <li class="row">
+              <%= link_to "Crear Nueva categoria", "/categories/new" %>    
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <% @article.each do |art| %>
+                <div class="col-md-3">
+                    <h3><%= art.title %></h3>
+                    <%= truncate(art.body, length:15 ) %> - <%= link_to "Eliminar", art, method: :delete %> -  <%= link_to "Editar", edit_article_path(art) %>
+                    <% if( art.may_publish? ) %>
+                        - <%= link_to "Publicar", "/articles/#{art.id}/publish", class:"blue", method: :put %>
+                    <% end %>
+                </div>
+            <% end %>
+            <%= will_paginate @article %>
+        </div>
+    </div>
+</div>

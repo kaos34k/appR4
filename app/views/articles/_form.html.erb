@@ -1,0 +1,28 @@
+<%= form_for (@article) do |f| %>
+    <% @article.errors.full_messages.each do |msm| %>
+    <div class="be-red white to-space">
+        * <%= msm %> 
+    </div>
+    <% end %>
+    <div class="field">
+        <%= f.text_field :title, placeholder:"titulo", class:"form-control" %>    
+    </div>
+    <div class="field">
+        <%= f.text_area :body, placeholder:"escribe tus comentarios", class:"form-control" %>
+    </div>
+    
+    <div class="field">
+        <label>Categorias</label>
+        <ul>
+            <% @categories.each do |category| %>
+                <div class="field">
+                    <%= check_box_tag "categories[]", category.id %> <%= category.name %>
+                </div>
+            <% end %>    
+        </ul>
+    </div>
+    
+    <div class="field">
+        <%= f.submit "Guardar", class:"be-red be-red white btn" %>
+    </div>
+<% end %>

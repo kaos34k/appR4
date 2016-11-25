@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AppR4</title>
+    <%= csrf_meta_tags %>
+    <link href="
+https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.css" rel="stylesheet" type="text/css"/>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <header>
+        <nav class="be-red white large-padding">
+          <ul class="no-list row center-xs middle-xs">
+            <% @categories.each do |category| %>
+            <li class="col-md">
+              <%= link_to category.name, category %>    
+            </li>  
+            <% end %>  
+            <% if user_signed_in? %>
+              <li class="col-md">
+                <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>    
+              </li>
+            <% else %>
+              <li class="col-md">
+                <%= link_to "Iniciar sesión", new_user_session_path %>  
+              </li>
+              <li class="col-md">
+                <%= link_to "Crear cuenta", new_user_registration_path %>  
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
+      <%= yield %>
+  </body>
+</html>
