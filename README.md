@@ -1,7 +1,7 @@
-# README
+# AppR4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este README normalmente documentaría los pasos necesarios para obtener el
+Aplicación en funcionamiento.
 
 Things you may want to cover:
 
